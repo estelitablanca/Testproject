@@ -63,5 +63,32 @@ historic_id int NOT NULL primary key,
 historic_date date,
 daysales_id int
 );
+create table paymenttype (
+paymenttype_id int NOT NULL primary key,
+paymentname varchar(30),
+);
+
+create table comision (
+comision_id int NOT NULL primary key,
+amount int,
+note varchar(100),
+salesperson_id int
+);
+
+
+create table salary (
+salary_id int NOT NULL primary key,
+pay int,
+tax float,
+note varchar(100),
+salesperson_id int
+);
+
+create table itemtype (
+itemtype_id int NOT NULL primary key,
+nameitem varchar(40),
+itemsubtype_id int
+);
+
 
 
