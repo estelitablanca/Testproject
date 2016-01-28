@@ -159,6 +159,7 @@ CREATE TABLE price (
 alter table season_discount add FOREIGN KEY (season_id) REFERENCES season (season_id);
 alter table article add FOREIGN KEY (price_id)REFERENCES price (price_id);
 alter table size add size_description varchar(20);
+alter table sales_person RENAME COLUMN "name" TO "firstname";
 
 
 --Inserts to size table --- 
@@ -199,5 +200,20 @@ insert into trademark (trademark_id, trademark_name) values (3, 'Calvin');
 -- Item ----
 insert into article (article_id, article_name, trademark_id, size_id, price_id) values (1, 'Short', 1, 1,1);
 insert into article (article_id, article_name, trademark_id, size_id, price_id) values (1, 'Umbrella', 2, 0, 3);
+
+--- sales person
+insert into sales_person (sales_person_id, firstname, lastname, age, entry_date, school_level)
+values (1, 'Brad', 'Pitt', 45, '2015-01-23','high school');
+insert into sales_person (sales_person_id, firstname, lastname, age, entry_date, school_level)
+values (2, 'Ricky', 'Martin', 41, '2011-05-23','kinder');
+
+--Comision ---
+insert into comision (comision_id, amount, note,sales_person_id) values (1, 100, 'puntuality', 1);
+insert into comision (comision_id, amount, note,sales_person_id) values (2, 800, 'energy', 2);
+
+
+
+
+
 
 
