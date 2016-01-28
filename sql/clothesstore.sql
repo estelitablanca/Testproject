@@ -158,3 +158,46 @@ CREATE TABLE price (
 
 alter table season_discount add FOREIGN KEY (season_id) REFERENCES season (season_id);
 alter table article add FOREIGN KEY (price_id)REFERENCES price (price_id);
+alter table size add size_description varchar(20);
+
+
+--Inserts to size table --- 
+insert into size (size_id, size_name, size_description) values (0, 'OS', 'One size fits all');
+insert into size (size_id, size_name, size_description) values (1, 'S', 'Small');
+insert into size (size_id, size_name, size_description) values (2, 'M', 'Medium');
+insert into size (size_id, size_name, size_description) values (3, 'L', 'Large');
+insert into size (size_id, size_name, size_description) values (4, 'XL', 'Extra Large');
+insert into size (size_id, size_name, size_description) values (5, 'XXL', 'Extra Extra Large');
+insert into size (size_id, size_name, size_description) values (6, 'XXXL', 'Extra Extra Large');
+
+
+-- Season
+insert into season (season_id, season_name) values (0, 'All season');
+insert into season (season_id, season_name) values (1, 'Spring');
+insert into season (season_id, season_name) values (2, 'Summer');
+insert into season (season_id, season_name) values (3, 'Fall');
+insert into season (season_id, season_name) values (4, 'Winter');
+
+-- Descuentos de temporada con nota
+insert into season_discount (season_discount_id, season_id,discount, note) values (0, 0, '00', 'Not discount');
+insert into season_discount (season_discount_id, season_id,discount, note) values (1, 1, '10', 'Shirt');
+insert into season_discount (season_discount_id, season_id,discount, note) values (2, 2, '20', 'Dress');
+insert into season_discount (season_discount_id, season_id,discount, note) values (3, 2, '30', 'Coat');
+insert into season_discount (season_discount_id, season_id,discount, note) values (4, 3, '5', 'skirt');
+insert into season_discount (season_discount_id, season_id,discount, note) values (5, 4, '50', 'suit');
+
+-- precios
+insert into price (price_id, price, season_discount_id) values (1, 10,2);
+insert into price (price_id, price, season_discount_id) values (2, 20, 1);
+insert into price (price_id, price, season_discount_id) values (3, 100, 0);
+
+---Brands ---
+insert into trademark (trademark_id, trademark_name) values (1, 'Guess');
+insert into trademark (trademark_id, trademark_name) values (2, 'Gap');
+insert into trademark (trademark_id, trademark_name) values (3, 'Calvin');
+
+-- Item ----
+insert into article (article_id, article_name, trademark_id, size_id, price_id) values (1, 'Short', 1, 1,1);
+insert into article (article_id, article_name, trademark_id, size_id, price_id) values (1, 'Umbrella', 2, 0, 3);
+
+
