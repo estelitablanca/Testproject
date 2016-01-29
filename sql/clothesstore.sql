@@ -212,6 +212,26 @@ insert into comision (comision_id, amount, note,sales_person_id) values (1, 100,
 insert into comision (comision_id, amount, note,sales_person_id) values (2, 800, 'energy', 2);
 
 
+--- Daysales
+insert into daysales (daysales_id, salesdate, sales_person_id, priceid) values (1, '2015-01-29', 1, 2);
+insert into daysales (daysales_id, salesdate, sales_person_id, priceid) values (2, '2015-01-29', 2, 3);
+insert into daysales (daysales_id, salesdate, sales_person_id, priceid) values (3, '2015-01-29', 2, 4);
+insert into daysales (daysales_id, salesdate, sales_person_id, priceid) values (4, '2015-01-29', 1, 2);
+
+--department
+insert into department (department_id, namedeparment) values (1, 'Ladies');
+insert into department (department_id, namedeparment) values (2, 'Men');
+insert into department (department_id, namedeparment) values (3, 'Kids');
+insert into department (department_id, namedeparment) values (4, 'Women');
+insert into department (department_id, namedeparment) values (5, 'Animals');
+insert into department (department_id, namedeparment) values (6, 'Underwear');
+insert into department (department_id, namedeparment) values (7, 'Swimwear');
+
+--Historic
+insert into historic (historic_id, historic_date, daysales_id) values (1, '2015-1-29', 1);
+insert into historic (historic_id, historic_date, daysales_id) values (2, '2015-1-29', 2);
+insert into historic (historic_id, historic_date, daysales_id) values (3, '2015-1-29', 3);
+
 
 
 
