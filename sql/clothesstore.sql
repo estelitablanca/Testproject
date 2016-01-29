@@ -233,6 +233,47 @@ insert into historic (historic_id, historic_date, daysales_id) values (2, '2015-
 insert into historic (historic_id, historic_date, daysales_id) values (3, '2015-1-29', 3);
 
 
+--itemsubtype
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (0, 'Bikini');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (1, 'One-piece');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (2, 'Swim Dress');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (3, 'Cover-up');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (4, 'Tankini');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (5, 'Board Shorts');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (6, 'Swim Trunks');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (7, 'Hybrids');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (8, 'Raincoats');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (9, 'Overcoats');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (10, 'Peacoats');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (11, 'Parkas');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (12, 'Ski');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (13, 'Vests');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (14, 'Sandals');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (15, 'Heels');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (16, 'Flats');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (17, 'Boots');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (18, 'Slippers');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (19, 'Oxfords');
+insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (20, 'Dress Shoes');
+
+-- itemtype
+insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (0, 'Swimwear for Women', 0);
+insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (1, 'Swimwear for Women', 1);
+insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (2, 'Swimwear for Women', 2);
+insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (3, 'Swimwear for Women', 3);
+insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (4, 'Swimwear for Women', 4);
+insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (5, 'Swimwear for Men', 5);
+insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (6, 'Swimwear for Men', 6);
+insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (7, 'Swimwear for Men', 7);
+insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (8, 'Coats & Jackets', 8);
+insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (9, 'Coats & Jackets', 9);
+insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (10, 'Coats & Jackets', 10);
+insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (11, 'Coats & Jackets', 11);
+insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (12, 'Coats & Jackets', 12);
+insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (13, 'Coats & Jackets', 13);
+insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (14, 'Coats & Jackets', 14);
+
+
 
 
 
