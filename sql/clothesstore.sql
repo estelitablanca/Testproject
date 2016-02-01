@@ -192,13 +192,13 @@ insert into price (price_id, price, season_discount_id) values (1, 10,2);
 insert into price (price_id, price, season_discount_id) values (2, 20, 1);
 insert into price (price_id, price, season_discount_id) values (3, 100, 0);
 
----Brands ---
+---Trademarks ---
 insert into trademark (trademark_id, trademark_name) values (1, 'Guess');
 insert into trademark (trademark_id, trademark_name) values (2, 'Gap');
 insert into trademark (trademark_id, trademark_name) values (3, 'Calvin');
 
--- Item ----
-insert into article (article_id, article_name, trademark_id, size_id, price_id) values (1, 'Short', 1, 1,1);
+-- article----
+insert into article (article_id, article_name, trademark_id, size_id, price_id) values (0, 'Short', 1, 1,1);
 insert into article (article_id, article_name, trademark_id, size_id, price_id) values (1, 'Umbrella', 2, 0, 3);
 
 --- sales person
@@ -256,24 +256,87 @@ insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (18, 'Slippers'
 insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (19, 'Oxfords');
 insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (20, 'Dress Shoes');
 
+alter table itemtype drop column itemsubtype_id
+alter table itemsubtype add itemtype_id int;
+alter table itemsubtype add FOREIGN KEY (itemtype_id) REFERENCES itemtype (itemtype_id);
+
 -- itemtype
-insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (0, 'Swimwear for Women', 0);
-insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (1, 'Swimwear for Women', 1);
-insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (2, 'Swimwear for Women', 2);
-insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (3, 'Swimwear for Women', 3);
-insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (4, 'Swimwear for Women', 4);
-insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (5, 'Swimwear for Men', 5);
-insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (6, 'Swimwear for Men', 6);
-insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (7, 'Swimwear for Men', 7);
-insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (8, 'Coats & Jackets', 8);
-insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (9, 'Coats & Jackets', 9);
-insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (10, 'Coats & Jackets', 10);
-insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (11, 'Coats & Jackets', 11);
-insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (12, 'Coats & Jackets', 12);
-insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (13, 'Coats & Jackets', 13);
-insert into itemtype (itemtype_id, nameitem, itemsubtype_id) values (14, 'Coats & Jackets', 14);
+insert into itemtype (itemtype_id, nameitem) values (0, 'Swimwear for Women');
+insert into itemtype (itemtype_id, nameitem) values (1, 'Swimwear for Men');
+insert into itemtype (itemtype_id, nameitem) values (2, 'Coats & Jackets');
+insert into itemtype (itemtype_id, nameitem) values (3, 'Shoes for Women');
+insert into itemtype (itemtype_id, nameitem) values (4, 'Shoes for Men');
+
+--itemsubtype
+update itemsubtype set itemtype_id = 0 WHERE itemsubtype_id = 0;
+update itemsubtype set itemtype_id = 0 WHERE itemsubtype_id = 1;
+update itemsubtype set itemtype_id = 0 WHERE itemsubtype_id = 2;
+update itemsubtype set itemtype_id = 0 WHERE itemsubtype_id = 3;
+update itemsubtype set itemtype_id = 0 WHERE itemsubtype_id = 4;
+update itemsubtype set itemtype_id = 1 WHERE itemsubtype_id = 5;
+update itemsubtype set itemtype_id = 1 WHERE itemsubtype_id = 6;
+update itemsubtype set itemtype_id = 1 WHERE itemsubtype_id = 7;
+update itemsubtype set itemtype_id = 2 WHERE itemsubtype_id = 8;
+update itemsubtype set itemtype_id = 2 WHERE itemsubtype_id = 9;
+update itemsubtype set itemtype_id = 2 WHERE itemsubtype_id = 10;
+update itemsubtype set itemtype_id = 2 WHERE itemsubtype_id = 11;
+update itemsubtype set itemtype_id = 2 WHERE itemsubtype_id = 12;
+update itemsubtype set itemtype_id = 2 WHERE itemsubtype_id = 13;
+update itemsubtype set itemtype_id = 3 WHERE itemsubtype_id = 14;
+update itemsubtype set itemtype_id = 3 WHERE itemsubtype_id = 15;
+update itemsubtype set itemtype_id = 3 WHERE itemsubtype_id = 16;
+update itemsubtype set itemtype_id = 3 WHERE itemsubtype_id = 17;
+update itemsubtype set itemtype_id = 3 WHERE itemsubtype_id = 18;
+update itemsubtype set itemtype_id = 4 WHERE itemsubtype_id = 19;
+update itemsubtype set itemtype_id = 4 WHERE itemsubtype_id = 20;
+
+--itemsubtype
+insert into itemsubtype (itemsubtype_id, nameitemsubtype, itemtype_id) values (21, 'Boots',4 );
+
+select itemsubtype_id, nameitemsubtype, itemtype.nameitem from itemsubtype LEFT JOIN itemtype ON (itemsubtype.itemtype_id = itemtype.itemtype_id);
+
+-- paymenttype
+insert into paymenttype (paymenttype_id, paymentname) values (0, 'Cash');
+insert into paymenttype (paymenttype_id, paymentname) values (1, 'Credit Card');
+insert into paymenttype (paymenttype_id, paymentname) values (2, 'Debit Card');
+insert into paymenttype (paymenttype_id, paymentname) values (3, 'Check');
+insert into paymenttype (paymenttype_id, paymentname) values (4, 'Food Stamps');
+
+-- salary
+
+alter table salary RENAME column "pay" TO "payment";
+alter table salary RENAME column "tax" TO "taxes";
+alter table salary alter column payment TYPE float;
+ALTER TABLE salary DROP CONSTRAINT salary_sales_person_id_fkey;
+alter table salary drop column sales_person_id;
+alter table sales_person add salary int;
+alter table sales_person add FOREIGN KEY (salary) REFERENCES salary (salary_id);
+
+-- salary
+insert into salary (salary_id, payment, taxes, note) values (0, 1250, 350, 'New member');
+insert into salary (salary_id, payment, taxes) values (1, 2250, 350);
+insert into salary (salary_id, payment, taxes, note) values (2, 3250, 350, 'Some notes for this element as example');
+insert into salary (salary_id, payment, taxes, note) values (3, 4250, 350, 'None');
+insert into salary (salary_id, payment, taxes, note) values (4, 5250, 350, 'Manager');
+
+update sales_person set salary = 0 WHERE sales_person_id = 1;
+update sales_person set salary = 1 WHERE sales_person_id = 2;
+
+select sales_person_id, firstname, lastname, age, entry_date, school_level, salary.payment from sales_person LEFT JOIN salary ON (sales_person.salary = salary.salary_id);
 
 
+
+
+--supplier
+
+insert into supplier (supplier_id, name, article_id) values (0,'Guess store',0);
+insert into supplier (supplier_id, name, article_id) values (1,'Gap store',1);
+
+
+-- warehouse
+
+insert into warehouse (warehouse_id, quantity, article_id, supplier_id) values (0,2,0,0);
+insert into warehouse (warehouse_id, quantity, article_id, supplier_id) values (1,1,1,1);
 
 
 
