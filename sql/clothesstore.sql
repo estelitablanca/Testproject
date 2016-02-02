@@ -256,7 +256,7 @@ insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (18, 'Slippers'
 insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (19, 'Oxfords');
 insert into itemsubtype (itemsubtype_id, nameitemsubtype) values (20, 'Dress Shoes');
 
-alter table itemtype drop column itemsubtype_id
+alter table itemtype drop column itemsubtype_id;
 alter table itemsubtype add itemtype_id int;
 alter table itemsubtype add FOREIGN KEY (itemtype_id) REFERENCES itemtype (itemtype_id);
 
@@ -329,13 +329,13 @@ select sales_person_id, firstname, lastname, age, entry_date, school_level, sala
 
 --supplier
 
-insert into supplier (supplier_id, name, article_id) values (0,'Guess store',0);
+insert into supplier (supplier_id, name, article_id) values (0,'Guess store',1);
 insert into supplier (supplier_id, name, article_id) values (1,'Gap store',1);
 
 
 -- warehouse
 
-insert into warehouse (warehouse_id, quantity, article_id, supplier_id) values (0,2,0,0);
+insert into warehouse (warehouse_id, quantity, article_id, supplier_id) values (0,2,2,0);
 insert into warehouse (warehouse_id, quantity, article_id, supplier_id) values (1,1,1,1);
 
 
